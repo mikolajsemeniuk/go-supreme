@@ -2,10 +2,22 @@ package handler
 
 import "net/http"
 
-type Handler interface {
-	List(w http.ResponseWriter, r *http.Request)
-	Read(w http.ResponseWriter, r *http.Request)
-	Create(w http.ResponseWriter, r *http.Request)
-	Update(w http.ResponseWriter, r *http.Request)
-	Remove(w http.ResponseWriter, r *http.Request)
+type ListHandler interface {
+	HandleList(w http.ResponseWriter, r *http.Request)
+}
+
+type ReadHandler interface {
+	HandleRead(w http.ResponseWriter, r *http.Request)
+}
+
+type CreateHandler interface {
+	HandleCreate(w http.ResponseWriter, r *http.Request)
+}
+
+type UpdateHandler interface {
+	HandleUpdate(w http.ResponseWriter, r *http.Request)
+}
+
+type RemoveHandler interface {
+	HandleRemove(w http.ResponseWriter, r *http.Request)
 }

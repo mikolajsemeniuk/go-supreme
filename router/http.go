@@ -1,11 +1,21 @@
 package router
 
-import "net/http"
+import (
+	"net/http"
+
+	"supreme/account"
+
+	"github.com/gorilla/mux"
+)
 
 type HTTPRouter struct {
+	Account account.Account
 }
 
 func (r *HTTPRouter) Route(listen string) error {
-	http.ListenAndServe(listen, nil)
+	router := mux.NewRouter()
+	router.HandleFunc("/article", r.Account.HandleList).Methods(http.MethodGet)
+	router.HandleFunc("/article/{id}", r.Account.HandleRead).Methods(http.MethodGet)
+	http.ListenAndServe(listen, router)
 	return nil
 }
