@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Make it handlers and use interface instead of account.Account
 type HTTPRouter struct {
 	Account account.Account
 }
