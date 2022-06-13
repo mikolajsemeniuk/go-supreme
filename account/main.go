@@ -23,7 +23,7 @@ func (a *Account) HandleRead(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("account"))
 }
 
-func (a *Account) RedisReader(document string) error {
+func (a *Account) RedisRead(document string) error {
 	return json.Unmarshal([]byte(document), a)
 }
 
